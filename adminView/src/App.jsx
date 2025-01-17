@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import './App.css';
 
-const socket = io('backend-alpha-sage-27.vercel.app');
+const socket = io('backend-kappa-umber.vercel.app');
 
 function AdminView() {
   const [score, setScore] = useState({
@@ -14,7 +14,7 @@ function AdminView() {
   });
 
   useEffect(() => {
-    fetch('backend-alpha-sage-27.vercel.app/score')
+    fetch('backend-kappa-umber.vercel.app/score')
       .then((res) => res.json())
       .then((data) => setScore(data));
 
@@ -26,7 +26,7 @@ function AdminView() {
   }, []);
 
   const handleUpdate = (runs, out = false) => {
-    fetch('backend-alpha-sage-27.vercel.app/score', {
+    fetch('backend-kappa-umber.vercel.app/score', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: out ? { out: true } : { runs } }),

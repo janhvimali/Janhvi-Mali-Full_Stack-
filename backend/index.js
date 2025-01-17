@@ -13,7 +13,7 @@ const io = new Server(server, { cors: { origin: '*' } });
 
 dotenv.config();
 app.use(cors({
-  origin:"https://backend-alpha-sage-27.vercel.app/",
+  origin:"backend-kappa-umber.vercel.app",
   credentials:true
 }));
 app.use(bodyParser.json());
