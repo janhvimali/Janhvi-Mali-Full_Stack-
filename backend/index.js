@@ -4,16 +4,21 @@ const { Server } = require('socket.io');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const dotenv = require("dotenv")
+
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: '*' } });
 
+dotenv.config();
 app.use(cors());
 app.use(bodyParser.json());
 
+const PORT = process.env.PORT;
 
-mongoose.connect('mongodb://127.0.0.1:27017/crickscore');
+
+mongoose.connect("mongodb+srv://janhvimali222:AulIJOxaSfBIkXWe@assignment.ua1h5.mongodb.net/?retryWrites=true&w=majority&appName=assignment");
 
 const ScoreSchema = new mongoose.Schema({
   runs: { type: Number, default: 0 },
@@ -85,6 +90,6 @@ app.post('/score', initializeDatabase, async (req, res) => {
 });
 
 
-server.listen(3000, () => {
+server.listen(PORT, () => {
   console.log('Server is running on http://localhost:3000');
 });
