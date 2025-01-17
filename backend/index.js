@@ -9,11 +9,11 @@ const dotenv = require("dotenv")
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server, { cors: { origin: 'https://backend-kappa-umber.vercel.app' } });
+const io = new Server(server, { cors: { origin: 'https://adminview-jade.vercel.app'} });
 
 dotenv.config();
 app.use(cors({
-  origin:"https://backend-kappa-umber.vercel.app",
+  origin: 'https://adminview-jade.vercel.app',
   credentials:true
 }));
 app.use(bodyParser.json());
