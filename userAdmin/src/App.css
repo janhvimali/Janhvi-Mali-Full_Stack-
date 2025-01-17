@@ -1,0 +1,55 @@
+.user-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  margin: 0 750px; 
+  width: 600px; 
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.header {
+  background: #f1f1f1;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.live-section {
+  width: 100%;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.animation {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.this-over {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.ball {
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.ball.active {
+  background: #007bff;
+  color: white;
+  border-color: #0056b3;
+}
