@@ -18,7 +18,6 @@ app.use(cors({
 }));
 app.use(bodyParser.json());
 
-const PORT = process.env.PORT;
 
 
 mongoose.connect("mongodb+srv://janhvimali222:AulIJOxaSfBIkXWe@assignment.ua1h5.mongodb.net/?retryWrites=true&w=majority&appName=assignment");
@@ -93,6 +92,6 @@ app.post('/score', initializeDatabase, async (req, res) => {
 });
 
 
-server.listen(PORT, () => {
+server.listen(process.env.PORT, () => {
   console.log('Server is running on http://localhost:3000');
 });
