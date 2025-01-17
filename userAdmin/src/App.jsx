@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import './App.css';
 
-const socket = io('http://localhost:3000');
+const socket = io('https://backend-kappa-umber.vercel.app:3000');
 
 function UserView() {
   const [score, setScore] = useState({
@@ -14,7 +14,7 @@ function UserView() {
   });
 
   useEffect(() => {
-    fetch('http://localhost:3000/score')
+    fetch('https://backend-kappa-umber.vercel.app:3000/score')
       .then((res) => res.json())
       .then((data) => setScore(data));
 
