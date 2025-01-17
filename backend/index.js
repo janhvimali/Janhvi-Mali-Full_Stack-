@@ -12,7 +12,10 @@ const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: '*' } });
 
 dotenv.config();
-app.use(cors());
+app.use(cors({
+  origin:"https://backend-alpha-sage-27.vercel.app/",
+  credentials:true
+}));
 app.use(bodyParser.json());
 
 const PORT = process.env.PORT;
