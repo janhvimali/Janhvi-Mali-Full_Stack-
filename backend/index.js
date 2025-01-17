@@ -12,11 +12,8 @@ const io = new Server(server, { cors: { origin: '*' } });
 app.use(cors());
 app.use(bodyParser.json());
 
-// MongoDB Connection
-mongoose.connect('mongodb://127.0.0.1:27017/crickscore', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+
+mongoose.connect('mongodb://127.0.0.1:27017/crickscore');
 
 const ScoreSchema = new mongoose.Schema({
   runs: { type: Number, default: 0 },
@@ -32,7 +29,7 @@ const ScoreSchema = new mongoose.Schema({
 
 const Score = mongoose.model('Score', ScoreSchema);
 
-// Middleware to check and initialize database if empty
+
 async function initializeDatabase(req, res, next) {
   let score = await Score.findOne();
   if (!score) {
@@ -46,18 +43,18 @@ async function initializeDatabase(req, res, next) {
     await score.save();
     console.log('Database initialized.');
   }
-  req.score = score; // Pass the score to the next middleware
+  req.score = score; 
   next();
 }
 
-// Get Current Data
+
 app.get('/score', initializeDatabase, async (req, res) => {
   res.send(req.score);
 });
 
-// Update Score
+
 app.post('/score', initializeDatabase, async (req, res) => {
-  const { action } = req.body; // action can be { runs: x } or { out: true }
+  const { action } = req.body; 
   const score = req.score;
 
   const isWicket = action.out || false;
@@ -83,11 +80,11 @@ app.post('/score', initializeDatabase, async (req, res) => {
   }
 
   await score.save();
-  io.emit('update', score); // Notify clients
+  io.emit('update', score); 
   res.send(score);
 });
 
-// Start Server
+
 server.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');
 });
