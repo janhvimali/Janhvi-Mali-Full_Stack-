@@ -9,13 +9,10 @@ const dotenv = require("dotenv")
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server, { cors: { origin: 'https://adminview-jade.vercel.app'} });
+const io = new Server(server, { cors:{origin:"*"} });
 
 dotenv.config();
-app.use(cors({
-  origin: 'https://adminview-jade.vercel.app',
-  credentials:true
-}));
+app.use(cors());
 app.use(bodyParser.json());
 
 
